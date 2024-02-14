@@ -1,0 +1,5 @@
+php artisan make:model Company -m
+
+php artisan admin:make CompanyController --model='App\Models\Company'
+
+ php artisan make:migration add_financial_period_id_stock_records_table --table=stock_records
