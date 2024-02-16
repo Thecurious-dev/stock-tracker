@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\StockCategory;
+use App\Models\StockItem;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
@@ -16,7 +17,7 @@ class StockCategoryController extends AdminController
      *
      * @var string
      */
-    protected $title = 'StockCategory';
+    protected $title = 'Stock Category';
 
     /**
      * Make a grid builder.
@@ -25,6 +26,11 @@ class StockCategoryController extends AdminController
      */
     protected function grid()
     {
+        // $item = StockItem::find(2);
+        // $stock_category = StockCategory::find($item->stock_category_id);
+        // $stock_category->update_self();
+        // die();
+
         $grid = new Grid(new StockCategory());
         $grid->disableBatchActions();
         $grid->quickSearch('name', 'description', 'status');
@@ -72,6 +78,8 @@ class StockCategoryController extends AdminController
      */
     protected function detail($id)
     {
+
+       
         $show = new Show(StockCategory::findOrFail($id));
 
         $show->field('id', __('Id'));

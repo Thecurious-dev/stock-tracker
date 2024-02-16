@@ -17,7 +17,7 @@ class StockSubCategoryController extends AdminController
      *
      * @var string
      */
-    protected $title = 'StockSubCategory';
+    protected $title = 'Stock SubCategory';
 
     /**
      * Make a grid builder.
@@ -35,7 +35,8 @@ class StockSubCategoryController extends AdminController
 
         $grid->model()
             ->where('company_id', $u->company_id)
-            ->orderBy('name', 'asc');//Display items for a particular company
+            ->orderBy('name', 'asc');
+            //Display items for a particular company
         $grid->column('id', __('ID'))->sortable();
         $grid->column('image', __('Image'))
             ->lightbox([
@@ -48,6 +49,7 @@ class StockSubCategoryController extends AdminController
                 if($category == null){
                     return '';
                 }
+                
                 return $category->name;
             })->sortable();
         $grid->column('company_id', __('Company id'));
@@ -61,9 +63,9 @@ class StockSubCategoryController extends AdminController
             ->display(function ($current_quantity){
                 return number_format($current_quantity). ' '.$this->measurement_unit;
             });
-        $grid->column('reorder_level', __('Reorder level'))
-            ->display(function ($reorder_level){
-                return number_format($reorder_level). ' '.$this->measurement_unit;
+        $grid->column('re0rder_level', __('Reorder level'))
+            ->display(function ($re0rder_level){
+                return number_format($re0rder_level). ' '.$this->measurement_unit;
             })->editable();
         $grid->column('in_stock', __('In Stock'))
             ->dot([
@@ -150,6 +152,7 @@ class StockSubCategoryController extends AdminController
         $form->text('measurement_unit', __('Measurement unit'))->required();
         $form->decimal('re0rder_level', __('Re0rder level'))->required();
 
+        
         return $form;
     }
 }

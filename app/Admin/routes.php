@@ -1,7 +1,11 @@
 <?php
 
 use App\Admin\Controllers\CompanyController;
+use App\Admin\Controllers\EmployeesController;
+use App\Admin\Controllers\FinancialPeriodController;
 use App\Admin\Controllers\StockCategoryController;
+use App\Admin\Controllers\StockItemController;
+use App\Admin\Controllers\StockRecordController;
 use App\Admin\Controllers\StockSubCategoryController;
 use Illuminate\Routing\Router;
 
@@ -21,5 +25,15 @@ Route::group([
 
     $router->resource('stock-categories', StockCategoryController::class);
 
+    
     $router->resource('stock-sub-categories', StockSubCategoryController::class);
+
+    $router->resource('financial-periods', FinancialPeriodController::class);
+
+    $router->resource('employees', EmployeesController::class);
+
+    $router->resource('stock-items', StockItemController::class);
+
+    $router->resource('stock-records', StockRecordController::class);
+
 });

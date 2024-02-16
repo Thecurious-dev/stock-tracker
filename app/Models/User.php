@@ -20,7 +20,54 @@ class User extends Administrator
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     * 
+     * 
      */
+
+     protected static function boot(){
+        parent::boot();
+
+        static::creating(function ($model){
+            $name = "";
+            if ($model->first_name != null && strlen($model->first_name)){
+                $name = $model->first_name;
+            }
+            if ($model->last_name != null && strlen($model->last_name)){
+                $name = $name ." ". $model->last_name;
+            }
+            $name = trim($name);
+
+            if($name != null && strlen($name) > 0){
+                $model->name = $name;
+            }
+            $model->username = $model->email;
+
+            if ($model->password == null || strlen($model->password) < 3){
+                $model->password = bcrypt('admin');
+            }
+
+            return $model;
+
+        });
+
+        static::updating(function ($model){
+            $name = "";
+            if ($model->first_name != null && strlen($model->fisrt_name) > 0){
+                $name = $model->first_name;
+            }
+            if ($model->last_name != null && strlen($model->last_name) > 0){
+                $name .= " ". $model->last_name;
+            }
+            $name = trim($name);
+
+            if($name != null && strlen($name) > 0){
+                $model->name = $name;
+            }
+            $model->username = $model->email;
+            return $model;
+
+        });
+    }
     protected $fillable = [
         'name',
         'email',
