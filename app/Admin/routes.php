@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Controllers\CompanyController;
+use App\Admin\Controllers\CompanyEditController;
 use App\Admin\Controllers\EmployeesController;
 use App\Admin\Controllers\FinancialPeriodController;
 use App\Admin\Controllers\StockCategoryController;
@@ -35,5 +36,7 @@ Route::group([
     $router->resource('stock-items', StockItemController::class);
 
     $router->resource('stock-records', StockRecordController::class);
+
+    $router->resource('companies-edit', CompanyEditController::class);
 
 });

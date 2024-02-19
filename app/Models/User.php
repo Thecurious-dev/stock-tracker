@@ -16,6 +16,10 @@ class User extends Administrator
 
 
     protected $table = 'admin_users';
+
+    public function company(){
+        return $this->belongsTo(Company::class, 'company_id');
+    }
     /**
      * The attributes that are mass assignable.
      *

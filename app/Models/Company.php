@@ -9,10 +9,12 @@ class Company extends Model
 {
     use HasFactory;
 
+   // protected $table = 'companies';
+
     protected static function boot(){
         parent::boot();
     
-        // //created
+         //created
         static::created(function($company){
             $owner = User::find($company->owner_id);
             if($owner == null){

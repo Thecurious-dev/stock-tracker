@@ -1,5 +1,10 @@
 <?php
 
+use App\Admin\Controllers\CompanyController;
+use App\Admin\Controllers\EmployeesController;
+use App\Http\Controllers\Api\ApiController as ApiApiController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\EmployeesContoller;
 use App\Models\StockItem;
 use App\Models\StockSubCategory;
 use Illuminate\Http\Request;
@@ -16,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('auth/register',[ApiController::class, 'register']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
