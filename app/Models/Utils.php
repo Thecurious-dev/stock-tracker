@@ -15,7 +15,7 @@ class Utils extends Model
         }
         $file_ext = $file->getClientOriginalExtension();
         $file_name = time(). "-" . rand(1000, 100000). "." .$file_ext;
-        $public_path = public_path()."/storage/images"; 
+        $public_path = public_path()."/uploads/images"; 
         $file->move($public_path, $file_name);
         $url = '/images'. $file_name;
         return $url;
@@ -25,6 +25,7 @@ class Utils extends Model
         $logged_in_user_id = $r->header("logged_in_user_id");
         return User::find($logged_in_user_id);
     }
+
     //API function for success response
     public static function success($data , $message ){
        //set header response to json

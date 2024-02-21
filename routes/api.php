@@ -22,6 +22,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('auth/register',[ApiController::class, 'register']);
+Route::post('auth/login',[ApiController::class, 'login']);
+Route::post('api/{m}', [ApiController::class, 'api_update']);
+Route::get('api/{m}', [ApiController::class, 'api_list']);
+Route::post('file_uploading', [ApiController::class, 'image_uploads']);
+Route::get('manifest', [ApiController::class, 'manifest']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
